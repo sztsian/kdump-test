@@ -462,7 +462,7 @@ prepare_ssh_connection()
         # save ipv6 address to ${path_ipv6_addr}
         local retval=0
         [ "$ip_version" == "v6" ] && {
-            ifconfig | grep inet6\ | grep global | awk -F' ' '{print $2}' > ${path_ipv6_addr}
+            ifconfig | grep inet6\ | grep -i global | sed 's/addr://g' | sed -e 's/\/[[:digit:]]\+//g' | awk -F' ' '{print $2}' > ${path_ipv6_addr}
             retval=$?
         }
 
