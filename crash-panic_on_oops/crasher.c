@@ -28,6 +28,7 @@
 #include <linux/proc_fs.h>
 #include <linux/spinlock.h>
 #include <asm/uaccess.h>
+#include <linux/uaccess.h>
 
 MODULE_LICENSE("GPL");
 
