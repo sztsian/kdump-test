@@ -248,6 +248,8 @@ kdump_prepare()
         [[ "${default}" == *vmlinux* ]] && {
             log_info "- Modifying ${K_SYS_CONFIG} properly for 'vmlinux'."
             sed -i 's/\(KDUMP_IMG\)=.*/\1=vmlinux/' ${K_SYS_CONFIG}
+            sed -i 's/MKDUMPRD_ARGS="/MKDUMPRD_ARGS="--allow-missing /g' ${K_SYS_CONFIG}
+            sed -i 's/MKDUMPRD_ARGS="--allow-missing --allow-missing/MKDUMPRD_ARGS="--allow-missing /g' ${K_SYS_CONFIG}
         }
 
         # In Fedora/upstream kernel, crashkernel=auto is not suppored.
